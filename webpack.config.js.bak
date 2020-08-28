@@ -1,0 +1,84 @@
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+const webpack = require('webpack'); //访问内置的插件
+const path = require("path");
+
+module.exports = {
+    entry: {
+        app: './src/index.js',
+    },
+    devtool: 'inline-source-map',
+    output: {
+        path: path.resolve(__dirname, "./dist"),
+        // filename: 'buidle.js'
+        filename: '[name].bundle.js',
+        publicPath: '/',
+    },
+    externals: {
+        // react: 'React',
+        // lodash:'Lodash',
+    },
+    resolve: {
+		extensions: ['*', '.js', '.jsx'],
+		alias: {
+            compoents: path.join(__dirname, 'src/components'),
+		}
+	},
+    module: {
+        rules: [
+            { test: /\.ts$/, exclude: /node_modules/, use: 'ts-loader' },
+            { 
+                test: /\.css$/, 
+                exclude: /node_modules/, 
+                use: [
+                    'style-loader',
+                    'css-loader',
+                ]
+            },
+            { 
+                test: /\.(js|jsx)$/, 
+                exclude: /node_modules/, 
+                use: {
+                    loader: 'babel-loader',
+                    options: {
+                        presets: [
+                            'babel-preset-env',
+                            "es2015"
+                        ]
+                    },
+                }
+            },
+        ]
+    },
+    devServer: {
+        open: true,
+        contentBase: path.join(__dirname, "dist"),
+        compress: true,
+        port: 9000,
+        hot: true,
+        // allowedHosts: [
+        //     '.host.com',
+        //     'host2.com'
+        // ],
+        // before:function(app){
+        //     app.get('/some/path', function(req, res) {
+        //         res.json({ custom: 'response' });
+        //     });
+        // },
+        // headers: {
+        //     "X-Custom-Foo": "bar"
+        // },
+    },
+    plugins: [
+        new CleanWebpackPlugin(),
+        new HtmlWebpackPlugin({
+            title: 'test HtmlWebpackPlugins Output Management'
+        }),
+        // new webpack.optimize.CommonsChunkPlugin({
+        //     //webpack 插件列表。例如，当多个 bundle 共享一些相同的依赖，CommonsChunkPlugin 有助于提取这些依赖到共享的 bundle 中，来避免重复打包
+        // }),
+        // webpack-dev-server 强化插件
+        new webpack.NamedModulesPlugin(),
+        new webpack.HotModuleReplacementPlugin(),
+    ]
+};
