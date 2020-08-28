@@ -49,7 +49,8 @@ module.exports = {
         new CleanWebpackPlugin(),
         //创建html文件
         new HtmlWebpackPlugin({
-            title: 'test HtmlWebpackPlugins Output Management'
+            title: 'test HtmlWebpackPlugins Output Management',
+            template:'./template/index.html',
         }),
     ]
 };
