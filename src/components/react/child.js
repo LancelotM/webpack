@@ -20,6 +20,28 @@ export default class Child extends React.Component {
         console.error('Child-componentDidMount');
         
     }
+
+    componentWillReceiveProps(nextProps){
+        console.error('Child-componentWillReceiveProps',nextProps);
+    }
+
+    componentWillUpdate(nextProps, nextState){
+        console.error('Child-componentWillUpdate',nextProps, nextState);
+    }
+
+    shouldComponentUpdate(nextProps, nextState){
+        console.error('Child-shouldComponentUpdate',nextProps, nextState);
+        const {boolean} = this.state;
+        //阻止因为父组建带动子组建渲染
+        if(nextState.boolean == boolean){
+            return false;
+        }
+        return true;
+    }
+
+    componentDidUpdate(prevProps,prevState,maybeSnapshot){
+        console.error('Child-componentDidUpdate',prevProps,prevState,maybeSnapshot);
+    }
   
     componentWillUnmount() {
         console.error('Child-componentWillUnmount');
@@ -44,7 +66,7 @@ export default class Child extends React.Component {
     }
   
     render() {
-        console.error('Child-render');
+        console.error('Child-render',this.props);
         return (
             <div>
                 <div className='child' onClick={()=>{this.handleClick()}}>

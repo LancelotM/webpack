@@ -5,6 +5,7 @@ export default class Parent extends React.Component {
     constructor(props) {
         super(props);
         this.state = {date: new Date()};
+        this.tick = this.tick.bind(this);
     }
 
     componentWillMount() {
@@ -17,6 +18,23 @@ export default class Parent extends React.Component {
         //     () => this.tick(),
         //     1000
         // );
+    }
+
+    componentWillReceiveProps(nextProps){
+        console.error('Parent-componentWillReceiveProps',nextProps);
+    }
+
+    componentWillUpdate(nextProps, nextState){
+        console.error('Parent-componentWillUpdate',nextProps, nextState);
+    }
+
+    shouldComponentUpdate(nextProps, nextState){
+        console.error('Parent-shouldComponentUpdate',nextProps, nextState);
+        return true;
+    }
+
+    componentDidUpdate(prevProps,prevState,maybeSnapshot){
+        console.error('Parent-componentDidUpdate',prevProps,prevState,maybeSnapshot);
     }
   
     componentWillUnmount() {
@@ -33,7 +51,7 @@ export default class Parent extends React.Component {
     render() {
         return (
             <div>
-                <div className='parent'>
+                <div className='parent' onClick={this.tick}>
                     <h1>Hello, React Parent!</h1>
                     <h2>It is {this.state.date.toLocaleTimeString()}.</h2>
                 </div>
