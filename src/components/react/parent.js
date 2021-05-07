@@ -9,11 +9,11 @@ export default class Parent extends React.Component {
     }
 
     componentWillMount() {
-        console.error('Parent-componentWillMount');
+        console.warn('Parent-componentWillMount');
     }
 
     componentDidMount() {
-        console.error('Parent-componentDidMount');
+        console.warn('Parent-componentDidMount');
         // this.timerID = setInterval(
         //     () => this.tick(),
         //     1000
@@ -21,24 +21,24 @@ export default class Parent extends React.Component {
     }
 
     componentWillReceiveProps(nextProps){
-        console.error('Parent-componentWillReceiveProps',nextProps);
+        console.warn('Parent-componentWillReceiveProps',nextProps);
     }
 
     componentWillUpdate(nextProps, nextState){
-        console.error('Parent-componentWillUpdate',nextProps, nextState);
+        console.warn('Parent-componentWillUpdate',nextProps, nextState);
     }
 
     shouldComponentUpdate(nextProps, nextState){
-        console.error('Parent-shouldComponentUpdate',nextProps, nextState);
+        console.warn('Parent-shouldComponentUpdate',nextProps, nextState);
         return true;
     }
 
     componentDidUpdate(prevProps,prevState,maybeSnapshot){
-        console.error('Parent-componentDidUpdate',prevProps,prevState,maybeSnapshot);
+        console.warn('Parent-componentDidUpdate',prevProps,prevState,maybeSnapshot);
     }
   
     componentWillUnmount() {
-        console.error('Parent-componentWillUnmount');
+        console.warn('Parent-componentWillUnmount');
         clearInterval(this.timerID);
     }
 
@@ -57,10 +57,10 @@ export default class Parent extends React.Component {
                 </div>
                 <Child />
                 <button onClick={()=>{
-                    console.error('go to home router');
+                    console.warn('go to home router');
                 }}>go to home</button>
                 <button onClick={()=>{
-                    console.error('go to hooks router');
+                    console.warn('go to hooks router');
                 }}>go to hooks</button>
             </div>
         );

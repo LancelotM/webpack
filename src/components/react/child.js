@@ -13,24 +13,24 @@ export default class Child extends React.Component {
     }
 
     componentWillMount() {
-        console.error('Child-componentWillMount');
+        console.warn('Child-componentWillMount');
     }
 
     componentDidMount() {
-        console.error('Child-componentDidMount');
+        console.warn('Child-componentDidMount');
         
     }
 
     componentWillReceiveProps(nextProps){
-        console.error('Child-componentWillReceiveProps',nextProps);
+        console.warn('Child-componentWillReceiveProps',nextProps);
     }
 
     componentWillUpdate(nextProps, nextState){
-        console.error('Child-componentWillUpdate',nextProps, nextState);
+        console.warn('Child-componentWillUpdate',nextProps, nextState);
     }
 
     shouldComponentUpdate(nextProps, nextState){
-        console.error('Child-shouldComponentUpdate',nextProps, nextState);
+        console.warn('Child-shouldComponentUpdate',nextProps, nextState);
         const {boolean} = this.state;
         //阻止因为父组建带动子组建渲染
         if(nextState.boolean == boolean){
@@ -40,11 +40,11 @@ export default class Child extends React.Component {
     }
 
     componentDidUpdate(prevProps,prevState,maybeSnapshot){
-        console.error('Child-componentDidUpdate',prevProps,prevState,maybeSnapshot);
+        console.warn('Child-componentDidUpdate',prevProps,prevState,maybeSnapshot);
     }
   
     componentWillUnmount() {
-        console.error('Child-componentWillUnmount');
+        console.warn('Child-componentWillUnmount');
     }
 
     handleClick(e) {
@@ -66,7 +66,7 @@ export default class Child extends React.Component {
     }
   
     render() {
-        console.error('Child-render',this.props);
+        console.warn('Child-render',this.props);
         return (
             <div>
                 <div className='child' onClick={()=>{this.handleClick()}}>
