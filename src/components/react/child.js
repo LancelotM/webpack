@@ -5,6 +5,7 @@ export default class Child extends React.Component {
         super(props);
         this.state = {
             boolean:false,
+            num:0
         };
         this.input = React.createRef();
         this.fileInput = React.createRef();
@@ -18,7 +19,19 @@ export default class Child extends React.Component {
 
     componentDidMount() {
         console.warn('Child-componentDidMount');
-        
+        // for (let i = 0; i < 10; i++) {
+        //   // this.setState({
+        //   //   num:this.state.num+1
+        //   // })
+        //   // console.warn(this.state.num);
+          // this.setState((prevState,prevProps)=>{
+        //     console.warn('prevState',prevState);
+        //     console.warn('prevProps',prevProps);
+        //     return {
+        //       num:prevState.num+1
+        //     }
+        //   })
+        // }
     }
 
     componentWillReceiveProps(nextProps){

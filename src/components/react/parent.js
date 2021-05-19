@@ -49,6 +49,7 @@ export default class Parent extends React.Component {
     }
   
     render() {
+        console.warn('Parent-render');
         return (
             <div>
                 <div className='parent' onClick={this.tick}>
@@ -57,7 +58,7 @@ export default class Parent extends React.Component {
                 </div>
                 <Child />
                 <button onClick={()=>{
-                    console.warn('go to home router');
+                  console.warn('go to home router');
                 }}>go to home</button>
                 <button onClick={()=>{
                     console.warn('go to hooks router');
