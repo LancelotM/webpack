@@ -1,4 +1,4 @@
-import React,{useState,useEffect,useContext,useCallback,useMemo} from 'react';
+import React,{useState,useEffect,useContext,useCallback,useMemo,useRef} from 'react';
 import {ThemeContext} from './context/theme';
 import { mergeCount } from "./testUseCallbackUseMemo";
 
@@ -37,8 +37,13 @@ export default function Child(props){
     /**
      * 第二个参数变化 调用第一个方法
      */
-    const memoizedValue = useMemo(() => mergeCount(props.parentCount,count), [props.parentCount,count]);
+    const memoizedValue = useMemo(
+        () => mergeCount(props.parentCount,count), 
+        [props.parentCount,count]
+    );
     console.log('memoizedValue',memoizedValue);
+
+    const inputEl = useRef(null);
 
     return(
         <div>
@@ -51,7 +56,15 @@ export default function Child(props){
                 onClick={()=>setCount(count+1)}>
                     add child count
             </button>
-            <p>parentCount + childCount : {memoizedValue}</p>
+            <div>
+                <input ref={inputEl} type='text'/>
+                <button onClick={()=>{
+                    inputEl.current.focus();
+                }}>Focus the input</button>
+                <button onClick={()=>{
+                    console.log('inputEl',inputEl);
+                }}>submit</button>
+            </div>
         </div>
     )
 }
