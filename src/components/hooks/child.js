@@ -64,7 +64,7 @@ export default function Child(props){
     //     // },3000)
     // })
     return(
-        <React.Suspense fallback={<p>loading......</p>}>
+        <div>
             <p>{'Child-count:'+count}</p>
             <button 
                 style={{
@@ -77,13 +77,27 @@ export default function Child(props){
             {/* <WaitComponent/> */}
             <div>
                 <input ref={inputEl} type='text'/>
-                <button onClick={()=>{
-                    inputEl.current.focus();
-                }}>Focus the input</button>
-                <button onClick={()=>{
-                    console.log('inputEl',inputEl);
-                }}>submit</button>
+                <button 
+                    style={{
+                        background:theme.background,
+                        color:theme.foreground
+                    }} 
+                    onClick={()=>{
+                        inputEl.current.focus();
+                    }}>
+                        Focus the input
+                </button>
+                <button 
+                    style={{
+                        background:theme.background,
+                        color:theme.foreground
+                    }} 
+                    onClick={()=>{
+                        console.log('inputEl',inputEl.current.value);
+                    }}>
+                        submit
+                </button>
             </div>
-        </React.Suspense>
+        </div>
     )
 }
