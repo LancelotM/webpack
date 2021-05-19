@@ -45,8 +45,26 @@ export default function Child(props){
 
     const inputEl = useRef(null);
 
+    // const WaitComponent = React.lazy(()=>{
+    //     function TestUseRef(props){
+    //         return (
+    //             <div>
+    //                 <input ref={inputEl} type='text'/>
+    //                 <button onClick={()=>{
+    //                     inputEl.current.focus();
+    //                 }}>Focus the input</button>
+    //                 <button onClick={()=>{
+    //                     console.log('inputEl',inputEl);
+    //                 }}>submit</button>
+    //             </div>
+    //         )
+    //     }
+    //     // setTimeout(()=>{
+            
+    //     // },3000)
+    // })
     return(
-        <div>
+        <React.Suspense fallback={<p>loading......</p>}>
             <p>{'Child-count:'+count}</p>
             <button 
                 style={{
@@ -56,6 +74,7 @@ export default function Child(props){
                 onClick={()=>setCount(count+1)}>
                     add child count
             </button>
+            {/* <WaitComponent/> */}
             <div>
                 <input ref={inputEl} type='text'/>
                 <button onClick={()=>{
@@ -65,6 +84,6 @@ export default function Child(props){
                     console.log('inputEl',inputEl);
                 }}>submit</button>
             </div>
-        </div>
+        </React.Suspense>
     )
 }
