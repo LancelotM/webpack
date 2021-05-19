@@ -2,21 +2,29 @@
 import React,{useState,useEffect} from 'react';
 import { useHistory } from 'react-router-dom';
 import Parent from './parent';
+const defaultCount = 0;
 
-export default function HooksDemo(props){
+export default function HooksApp(props){
     let history = useHistory();
+    let [count,setCount] = useState(defaultCount);
 
     useEffect(() => {
-        console.warn('HooksDemo-相当于DidMount');
+        console.warn('HooksApp-useEffect-count',count);
+    },[count]);
+
+    useEffect(() => {
+        console.warn('HooksApp-useEffect-相当于DidMount');
     },[]);
 
     useEffect(() => {
-      console.warn('HooksDemo-useEffect没有第二个参数，每次都触发');
+      console.warn('HooksApp-useEffect没有第二个参数，每次都触发');
     })
     
     return <div>
         <h1>Hello Hooks!</h1>
-        <Parent/>
+        <p>{'HooksApp-count:'+count}</p>
+        <button onClick={()=>setCount(count+1)}>add count</button>
+        <Parent defaultCount={defaultCount}/>
         <div>
             <button onClick={()=>{
                 history.push({
