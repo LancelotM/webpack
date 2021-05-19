@@ -1,9 +1,12 @@
-import React,{useState,useEffect} from 'react';
+import React,{useState,useEffect,useContext} from 'react';
 import Child from './child';
+import {ThemeContext} from './context/theme';
 
 export default function Parent(props){
     console.log('Parent-props',props);
     let [count,setCount] = useState(props.defaultCount);
+    const theme = useContext(ThemeContext);
+    console.log('Parent-theme',theme);
 
     useEffect(() => {
         console.warn('Parent-useEffect-count',count);
@@ -28,7 +31,14 @@ export default function Parent(props){
     return(
         <div>
             <p>{'Parent-count:'+count}</p>
-            <button onClick={()=>setCount(count+1)}>add parent count</button>
+            <button 
+                style={{
+                    background:theme.background,
+                    color:theme.foreground
+                }} 
+                onClick={()=>setCount(count+1)}>
+                    add parent count
+            </button>
             <Child parentCount={count} {...props}/>
         </div>
     )

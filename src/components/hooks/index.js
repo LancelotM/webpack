@@ -1,12 +1,15 @@
  
-import React,{useState,useEffect} from 'react';
-import { useHistory } from 'react-router-dom';
+import React,{useState,useEffect,useContext} from 'react';
 import Parent from './parent';
+import AppFoot from './foot';
+import {ThemeContext} from './context/theme';
+
 const defaultCount = 0;
 
 export default function HooksApp(props){
-    let history = useHistory();
     let [count,setCount] = useState(defaultCount);
+    const theme = useContext(ThemeContext);
+    console.log('HooksApp-theme',theme);
 
     useEffect(() => {
         console.warn('HooksApp-useEffect-count',count);
@@ -20,30 +23,13 @@ export default function HooksApp(props){
       console.warn('HooksApp-useEffect没有第二个参数，每次都触发');
     })
     
-    return <div>
-        <h1>Hello Hooks!</h1>
-        <p>{'HooksApp-count:'+count}</p>
-        <button onClick={()=>setCount(count+1)}>add app count</button>
-        <Parent defaultCount={defaultCount}/>
-        <div>
-            <button onClick={()=>{
-                history.push({
-                    pathname: '/',
-                    state: {
-                        identityId: 1
-                    }
-                })
-                console.error('go to home router');
-            }}>go to home</button>
-            <button onClick={()=>{
-                history.push({
-                    pathname: '/react',
-                    state: {
-                        identityId: 1
-                    }
-                })
-                console.error('go to react router');
-            }}>go to react</button>
-        </div>
-    </div>
+    return (
+        <ThemeContext.Provider value={theme.dark}>
+            <h1>Hello Hooks!</h1>
+            <p>{'HooksApp-count:'+count}</p>
+            <button onClick={()=>setCount(count+1)}>add app count</button>
+            <Parent defaultCount={defaultCount}/>
+            <AppFoot/>
+        </ThemeContext.Provider>
+    )
 }

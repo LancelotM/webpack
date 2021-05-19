@@ -1,8 +1,10 @@
-import React,{useState,useEffect} from 'react';
+import React,{useState,useEffect,useContext} from 'react';
+import {ThemeContext} from './context/theme';
 
 export default function Child(props){
     console.log('Child-props',props);
     let [count,setCount] = useState(props.defaultCount);
+    const theme = useContext(ThemeContext);
 
     useEffect(() => {
         console.warn('Child-useEffect-count',count);
@@ -21,7 +23,14 @@ export default function Child(props){
     return(
         <div>
             <p>{'Child-count:'+count}</p>
-            <button onClick={()=>setCount(count+1)}>add child count</button>
+            <button 
+                style={{
+                    background:theme.background,
+                    color:theme.foreground
+                }} 
+                onClick={()=>setCount(count+1)}>
+                    add child count
+            </button>
         </div>
     )
 }
