@@ -23,7 +23,7 @@ export default function HooksApp(props){
     return <div>
         <h1>Hello Hooks!</h1>
         <p>{'HooksApp-count:'+count}</p>
-        <button onClick={()=>setCount(count+1)}>add count</button>
+        <button onClick={()=>setCount(count+1)}>add app count</button>
         <Parent defaultCount={defaultCount}/>
         <div>
             <button onClick={()=>{
