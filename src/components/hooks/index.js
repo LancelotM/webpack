@@ -1,19 +1,27 @@
  
-import React,{useState,useEffect,useContext} from 'react';
+import React,{useState,useEffect,useContext,useReducer} from 'react';
 import Parent from './parent';
 import AppFoot from './foot';
 import {ThemeContext} from './context/theme';
+import reducer from './testUseReducer';
 
 const defaultCount = 0;
+const initialState = {count: defaultCount};
 
 export default function HooksApp(props){
-    let [count,setCount] = useState(defaultCount);
+    // let [count,setCount] = useState(defaultCount);
+    /**
+     * 测试下来 useReducer 和 state差别不大
+     *  切换后不会保存上次的值
+     */
+    const [state, dispatch] = useReducer(reducer, initialState);
+    console.log('useReducer',state);
     const theme = useContext(ThemeContext);
     console.log('HooksApp-theme',theme);
 
     useEffect(() => {
-        console.warn('HooksApp-useEffect-count',count);
-    },[count]);
+        console.warn('HooksApp-useEffect-count',state.count);
+    },[state.count]);
 
     useEffect(() => {
         console.warn('HooksApp-useEffect-相当于DidMount');
@@ -26,8 +34,9 @@ export default function HooksApp(props){
     return (
         <ThemeContext.Provider value={theme.dark}>
             <h1>Hello Hooks!</h1>
-            <p>{'HooksApp-count:'+count}</p>
-            <button onClick={()=>setCount(count+1)}>add app count</button>
+            <p>{'HooksApp-useReducer-count:'+state.count}</p>
+            <button onClick={()=>dispatch({type:'increment'})}>increment</button>
+            <button onClick={()=>dispatch({type:'decrement'})}>decrement</button>
             <Parent defaultCount={defaultCount}/>
             <AppFoot/>
         </ThemeContext.Provider>
