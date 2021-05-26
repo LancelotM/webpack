@@ -23,23 +23,20 @@ export default function Child(props){
     },[]);
 
     /**
-     * 第二个参数变化 调用第一个回调函数
+     * 优化mergeCount
      */
-    const memoizedCallback = useCallback(
-        ()=>{
-            /**
-             * 这里可以写关于第二个参数改后需要处理的业务逻辑
-             */
-            return mergeCount(props.parentCount,count)
-        },
-        [props.parentCount,count]
-    );
-    console.log('memoizedCallback',memoizedCallback,memoizedCallback());
+    const memoizedCallback = useCallback(()=>{
+        /**
+         * 这里可以写关于第二个参数改后需要处理的业务逻辑
+         */
+        return mergeCount(props.parentCount,count)
+    },[props.parentCount,count]);
+    console.log('memoizedCallback',memoizedCallback);
     /**
      * 第二个参数变化 调用第一个方法
      */
     useMemo(() => {
-        setAllCount(mergeCount(props.parentCount,count))
+        setAllCount(memoizedCallback())
     },[props.parentCount,count]);
 
     const inputEl = useRef(null);
