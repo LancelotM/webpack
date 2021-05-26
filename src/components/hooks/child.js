@@ -5,6 +5,7 @@ import { mergeCount } from "./testUseCallbackUseMemo";
 export default function Child(props){
     console.log('Child-props',props);
     let [count,setCount] = useState(props.defaultCount);
+    let [allCount,setAllCount] = useState(0);
     const theme = useContext(ThemeContext);
 
     useEffect(() => {
@@ -37,11 +38,9 @@ export default function Child(props){
     /**
      * 第二个参数变化 调用第一个方法
      */
-    const memoizedValue = useMemo(
-        () => mergeCount(props.parentCount,count), 
-        [props.parentCount,count]
-    );
-    console.log('memoizedValue',memoizedValue);
+    useMemo(() => {
+        setAllCount(mergeCount(props.parentCount,count))
+    },[props.parentCount,count]);
 
     const inputEl = useRef(null);
 
@@ -74,6 +73,7 @@ export default function Child(props){
                 onClick={()=>setCount(count+1)}>
                     add child count
             </button>
+            <p>{'allCount:'+allCount}</p>
             {/* <WaitComponent/> */}
             <div>
                 <input ref={inputEl} type='text'/>
