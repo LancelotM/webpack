@@ -1,5 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { createStore } from 'redux'
+import { Provider } from 'react-redux'
+import rootReducer from './reducers'
 import { HashRouter as Router, Route, Switch } from 'react-router-dom';
 import _ from 'lodash';
 import { printMe } from 'compoents/print';
@@ -8,20 +11,23 @@ import './index.css';
 import Layout from 'compoents/layout';
 import {routes} from './router';
 
+const store = createStore(rootReducer)
 
 ReactDOM.render(
-    <Router>
-        <Layout/>
-        <Switch>
-            {
-                routes.map((router)=>{
-                    return (
-                        <Route key={router.link} exact={router.exact} path={router.path} component={router.component} />
-                    )
-                })
-            }
-        </Switch>
-    </Router>
+    <Provider store={store}>
+        <Router>
+            <Layout/>
+            <Switch>
+                {
+                    routes.map((router)=>{
+                        return (
+                            <Route key={router.link} exact={router.exact} path={router.path} component={router.component} />
+                        )
+                    })
+                }
+            </Switch>
+        </Router>
+    </Provider>
     , document.getElementById('root')
 )
 

@@ -1,10 +1,11 @@
 import React,{useState,useEffect,useContext,useCallback,useMemo,useRef} from 'react';
-import {ThemeContext} from './context/theme';
-import { mergeCount } from "./testUseCallbackUseMemo";
+import {ThemeContext} from '../context/theme';
+import { mergeCount } from "../testUseCallbackUseMemo";
+import {defaultCount} from '../config';
 
 export default function Child(props){
     console.log('Child-props',props);
-    let [count,setCount] = useState(props.defaultCount);
+    let [count,setCount] = useState(defaultCount);
     let [allCount,setAllCount] = useState(0);
     const theme = useContext(ThemeContext);
 

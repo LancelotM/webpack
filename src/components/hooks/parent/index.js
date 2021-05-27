@@ -1,10 +1,11 @@
 import React,{useState,useEffect,useContext} from 'react';
-import Child from './child';
-import {ThemeContext} from './context/theme';
+import Child from '../child/index';
+import {ThemeContext} from '../context/theme';
+import {defaultCount} from '../config';
 
 export default function Parent(props){
     console.log('Parent-props',props);
-    let [count,setCount] = useState(props.defaultCount);
+    let [count,setCount] = useState(defaultCount);
     const theme = useContext(ThemeContext);
     console.log('Parent-theme',theme);
 

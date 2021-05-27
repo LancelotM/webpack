@@ -50,7 +50,7 @@ module.exports = {
         new CleanWebpackPlugin(),
         //创建html文件
         new HtmlWebpackPlugin({
-            title: 'test HtmlWebpackPlugins Output Management',
+            title: 'webpack脚手架',
             template:'./template/index.html',
         }),
     ]
