@@ -39,7 +39,7 @@ export default class Parent extends React.Component {
   
     componentWillUnmount() {
         console.warn('Parent-componentWillUnmount');
-        clearInterval(this.timerID);
+        // clearInterval(this.timerID);
     }
 
     tick() {

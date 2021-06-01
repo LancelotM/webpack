@@ -2,9 +2,12 @@ import React,{useState,useEffect,useContext} from 'react';
 import Child from '../child/index';
 import {ThemeContext} from '../context/theme';
 import {defaultCount} from '../config';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import * as actions from './redux/action';
 
-export default function Parent(props){
-    console.log('Parent-props',props);
+const Parent = (props) => {
+    console.error('Parent-props',props);
     let [count,setCount] = useState(defaultCount);
     const theme = useContext(ThemeContext);
     console.log('Parent-theme',theme);
@@ -31,16 +34,44 @@ export default function Parent(props){
 
     return(
         <div>
-            <p>{'Parent-count:'+count}</p>
-            <button 
-                style={{
-                    background:theme.background,
-                    color:theme.foreground
-                }} 
-                onClick={()=>setCount(count+1)}>
-                    add parent count
-            </button>
-            <Child parentCount={count} {...props}/>
+            <p>
+                {'Parent-state-count:'+count}
+                <button 
+                    style={{
+                        background:theme.background,
+                        color:theme.foreground
+                    }} 
+                    onClick={()=>setCount(count+1)}>
+                        add parent count
+                </button>
+            </p>
+            <p>
+                {'Parent-redux-count:'+props.count}
+                <button 
+                    style={{
+                        background:theme.background,
+                        color:theme.foreground
+                    }} 
+                    onClick={props.actions.incrementCount}>
+                        increment redux count
+                </button>
+                <button 
+                    style={{
+                        background:theme.background,
+                        color:theme.foreground
+                    }} 
+                    onClick={props.actions.decrementCount}>
+                        decrement redux count
+                </button>
+            </p>
+            <Child parentCount={count}/>
         </div>
     )
 }
+
+// export default Parent;
+
+export default (connect(
+    state => state.hooksParentReducer,
+    dispatch => ({ actions: bindActionCreators(actions, dispatch) }),
+))(Parent);

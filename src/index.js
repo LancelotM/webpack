@@ -1,8 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { createStore } from 'redux'
+import { createStore,applyMiddleware } from 'redux'
 import { Provider } from 'react-redux'
-import rootReducer from './reducers'
+import thunkMiddleware from 'redux-thunk'
+import { composeWithDevTools } from 'redux-devtools-extension'
+import rootReducer from './rootReducer'
 import { HashRouter as Router, Route, Switch } from 'react-router-dom';
 import _ from 'lodash';
 import { printMe } from 'compoents/print';
@@ -11,7 +13,9 @@ import './index.css';
 import Layout from 'compoents/layout';
 import {routes} from './router';
 
-const store = createStore(rootReducer)
+const composedEnhancer = composeWithDevTools(applyMiddleware(thunkMiddleware))
+
+const store = createStore(rootReducer,composedEnhancer)
 
 ReactDOM.render(
     <Provider store={store}>
