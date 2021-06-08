@@ -3,6 +3,7 @@ import Layout from 'compoents/layout';
 import HooksDemo from 'compoents/hooks';
 import ReactDemo from 'compoents/react';
 import HomeDemo from 'compoents/home';
+import TestDemo from 'compoents/test';
 
 const oldRoutes = {
     path: '/',
@@ -24,6 +25,7 @@ const routes = [
     {link:'home',path:'/',component:HomeDemo,exact:true},
     {link:'hooks',path:'/hooks',component:HooksDemo,exact:true},
     {link:'react',path:'/react',component:ReactDemo,exact:true},
+    {link:'test',path:'/test',component:TestDemo,exact:true},
 ]
 
 export {oldRoutes ,routes};
