@@ -5,9 +5,9 @@ export default function reducer(state=initialState, action) {
     console.log('parent-reducer', state, action);
     switch (action.type) {
         case PARENT_INCREMENT:
-            return {count: state.count + 1};
+            return {parentCount: state.parentCount + 1};
         case PARENT_DECREMENT:
-            return {count: state.count - 1};
+            return {parentCount: state.parentCount - 1};
         case PARENT_CHANGE_STATE:
             return Object.assign({},state,action.data);
         default:

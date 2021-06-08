@@ -1,5 +1,5 @@
 import { combineReducers } from 'redux'
-import {hooksParentReducer} from './components/hooks/reducers';
+import {hooksParentReducer} from './pages/hooks/reducers';
 
 console.warn('hooksParentReducer',hooksParentReducer);
 // console.warn('hooksReducers',hooksReducers);

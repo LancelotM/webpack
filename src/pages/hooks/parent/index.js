@@ -5,14 +5,14 @@ import {defaultCount} from '../config';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import * as actions from './redux/action';
-import initialState from './redux/initialState';
-import reducer from './redux/reducer';
-import {PARENT_INCREMENT,PARENT_DECREMENT,PARENT_CHANGE_STATE} from './redux/constants';
+// import initialState from './redux/initialState';
+// import reducer from './redux/reducer';
+// import {PARENT_INCREMENT,PARENT_DECREMENT,PARENT_CHANGE_STATE} from './redux/constants';
 
 const Parent = (props) => {
     console.error('Parent-props',props);
-    const [state, dispatch] = useReducer(reducer, initialState);
-    console.log('useReducer-state',state);
+    // const [state, dispatch] = useReducer(reducer, initialState);
+    // console.log('useReducer-state',state);
     let [count,setCount] = useState(defaultCount);
     const theme = useContext(ThemeContext);
     console.log('Parent-theme',theme);
@@ -51,17 +51,17 @@ const Parent = (props) => {
                 </button>
             </p>
             <p>
-                {/* {'Parent-redux-count:'+props.count} */}
-                {'Parent-redux-count:'+state.count}
+                {'Parent-redux-count:'+props.parentCount}
+                {/* {'Parent-redux-count:'+state.count} */}
                 <button 
                     style={{
                         background:theme.background,
                         color:theme.foreground
                     }} 
-                    // onClick={props.actions.incrementCount}
-                    onClick={()=>{
-                        dispatch({type:PARENT_INCREMENT})
-                    }}
+                    onClick={props.actions.incrementCount}
+                    // onClick={()=>{
+                    //     dispatch({type:PARENT_INCREMENT})
+                    // }}
                     >
                         increment redux count
                 </button>
@@ -70,22 +70,22 @@ const Parent = (props) => {
                         background:theme.background,
                         color:theme.foreground
                     }} 
-                    // onClick={props.actions.decrementCount}
-                    onClick={()=>{
-                        dispatch({type:PARENT_DECREMENT})
-                    }}
+                    onClick={props.actions.decrementCount}
+                    // onClick={()=>{
+                    //     dispatch({type:PARENT_DECREMENT})
+                    // }}
                     >
                         decrement redux count
                 </button>
             </p>
-            <Child parentCount={count}/>
+            <Child/>
         </div>
     )
 }
 
-export default Parent;
+// export default Parent;
 
-// export default (connect(
-//     state => state.hooksParentReducer,
-//     dispatch => ({ actions: bindActionCreators(actions, dispatch) }),
-// ))(Parent);
+export default (connect(
+    state => state.hooksParentReducer,
+    dispatch => ({ actions: bindActionCreators(actions, dispatch) }),
+))(Parent);
