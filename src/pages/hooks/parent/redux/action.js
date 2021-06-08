@@ -2,7 +2,7 @@
 import {PARENT_INCREMENT,PARENT_DECREMENT,PARENT_CHANGE_STATE} from './constants';
 
 
-export const incrementCount = () => {
+export const incrementParentCount = () => {
     return (dispatch, getState) => {
         console.log(dispatch,getState());
         dispatch({
@@ -11,7 +11,7 @@ export const incrementCount = () => {
     }
 };
 
-export const decrementCount = () => {
+export const decrementParentCount = () => {
     return (dispatch, getState) => {
         console.log(dispatch,getState());
         dispatch({
@@ -20,14 +20,14 @@ export const decrementCount = () => {
     }
 };
 
-export const changeCount = (count) => {
-    console.log('parent-changeCount',count);
+export const changeParentCount = (parentCount) => {
+    console.log('parent-changeCount',parentCount);
     return (dispatch, getState) => {
         console.log(dispatch,getState());
         dispatch({
             type: PARENT_CHANGE_STATE,
             data:{
-                count
+                parentCount
             }
         })
     }

@@ -1,7 +1,7 @@
 import {defaultCount} from '../../config';
 
 const initialState = {
-	count: defaultCount,
+	childCount: defaultCount,
     allCount:0,
 };
 

@@ -5,15 +5,11 @@ import {defaultCount} from '../config';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import * as actions from './redux/action';
-// import initialState from './redux/initialState';
-// import reducer from './redux/reducer';
-// import {PARENT_INCREMENT,PARENT_DECREMENT,PARENT_CHANGE_STATE} from './redux/constants';
 
 const Parent = (props) => {
     console.error('Parent-props',props);
-    // const [state, dispatch] = useReducer(reducer, initialState);
-    // console.log('useReducer-state',state);
     let [count,setCount] = useState(defaultCount);
+    const {parentCount,actions} = props;
     const theme = useContext(ThemeContext);
     console.log('Parent-theme',theme);
 
@@ -33,7 +29,8 @@ const Parent = (props) => {
         console.warn('Parent-useEffect-相当于DidMount');
         for (let i = 0; i < 10; i++) {
             setCount(count+1)
-            console.warn('Parent-useEffect-for',count);
+            actions.incrementParentCount()
+            // console.warn('Parent-useEffect-for',count);
         }
     },[]);
 
@@ -51,17 +48,13 @@ const Parent = (props) => {
                 </button>
             </p>
             <p>
-                {'Parent-redux-count:'+props.parentCount}
-                {/* {'Parent-redux-count:'+state.count} */}
+                {'Parent-redux-count:'+parentCount}
                 <button 
                     style={{
                         background:theme.background,
                         color:theme.foreground
                     }} 
-                    onClick={props.actions.incrementCount}
-                    // onClick={()=>{
-                    //     dispatch({type:PARENT_INCREMENT})
-                    // }}
+                    onClick={actions.incrementParentCount}
                     >
                         increment redux count
                 </button>
@@ -70,10 +63,7 @@ const Parent = (props) => {
                         background:theme.background,
                         color:theme.foreground
                     }} 
-                    onClick={props.actions.decrementCount}
-                    // onClick={()=>{
-                    //     dispatch({type:PARENT_DECREMENT})
-                    // }}
+                    onClick={actions.decrementParentCount}
                     >
                         decrement redux count
                 </button>
@@ -83,9 +73,7 @@ const Parent = (props) => {
     )
 }
 
-// export default Parent;
-
 export default (connect(
-    state => state.hooksParentReducer,
+    state => state.hooksReducers.hooksParentReducer,
     dispatch => ({ actions: bindActionCreators(actions, dispatch) }),
 ))(Parent);
