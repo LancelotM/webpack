@@ -1,25 +1,42 @@
 import { useCallback } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch, useSelector, shallowEqual } from 'react-redux';
 import {CHILD_INCREMENT,CHILD_DECREMENT,CHILD_CHANGE_STATE} from './constants';
 
 export const useClaimAllCount = () => {
     const dispatch = useDispatch();
 
-    const { fetchClaimPending } = useSelector(
+    const { parentCount,childCount,allCount } = useSelector(
         state => ({
-            fetchClaimPending: state.farm.fetchClaimPending,
+          parentCount: state.hooksReducers.hooksParentReducer.parentCount,
+          childCount: state.hooksReducers.hooksChildReducer.childCount,
+          allCount: state.hooksReducers.hooksChildReducer.allCount
         })
-    );
-
-    const boundAction = useCallback(
-        data => dispatch(fetchClaim(data)),
+    ,shallowEqual);
+    // console.error('shallowEqual',shallowEqual);
+    const boundClaimAllCountAction = useCallback(
+        data => dispatch(claimAllCount()),
         [dispatch]
     );
-    return
+    const boundIncrementChildCountAction = useCallback(
+        data => dispatch(incrementChildCount()),
+        [dispatch]
+    );
+    const boundDecrementChildCountAction = useCallback(
+        data => dispatch(decrementChildCount()),
+        [dispatch]
+    );
+    return {
+        parentCount,
+        childCount,
+        allCount,
+        claimAllCount:boundClaimAllCountAction,
+        incrementChildCount:boundIncrementChildCountAction,
+        decrementChildCount:boundDecrementChildCountAction
+    }
 }
 
 
-export const claimAllCount1 = ()=>{
+export const claimAllCount = ()=>{
     return (dispatch, getState) => {
         let hooksState = getState().hooksReducers;
         let allCount = hooksState.hooksChildReducer.childCount + hooksState.hooksParentReducer.parentCount
