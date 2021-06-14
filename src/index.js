@@ -7,10 +7,10 @@ import { composeWithDevTools } from 'redux-devtools-extension'
 import rootReducer from './rootReducer'
 import { HashRouter as Router, Route, Switch } from 'react-router-dom';
 import _ from 'lodash';
-import { printMe } from 'compoents/print';
+import { printMe } from 'components/print';
 // import './index.ts';
 import './index.css';
-import Layout from 'compoents/layout';
+import Layout from 'components/layout';
 import {routes} from './router';
 
 const composedEnhancer = composeWithDevTools(applyMiddleware(thunkMiddleware))

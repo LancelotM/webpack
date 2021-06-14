@@ -11,9 +11,7 @@ module.exports = merge(common, {
     resolve:{
         extensions: ['*', '.js', '.jsx'],
         alias:{
-            common: path.join(__dirname, 'src/common'),
             components: path.join(__dirname, 'src/components'),
-            images: path.join(__dirname, 'src/images'),
         }
     },
     devServer: {

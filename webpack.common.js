@@ -15,8 +15,10 @@ module.exports = {
     resolve: {
 		extensions: ['*', '.js', '.jsx', '.ts'],
 		alias: {
-            compoents: path.join(__dirname, 'src/components'),
+            components: path.join(__dirname, 'src/components'),
             reactDom: '@hot-loader/react-dom',
+            common: path.join(__dirname, 'src/common'),
+            images: path.join(__dirname, 'src/images'),
 		}
     },
     module: {
@@ -47,9 +49,10 @@ module.exports = {
                 test: /\.(png|svg|jpg|jpeg|gif)$/i,
                 loader: 'file-loader',
                 options: {
-                    limit: 10000,
-                    name: 'static/media/[name].[hash:8].[ext]',
-                    esModule: false
+                    name:'assets/[name].[ext]',
+                    // limit: 10000,
+                    // name: 'static/media/[name].[hash:8].[ext]',
+                    // esModule: false
                 },
             },
         ]
