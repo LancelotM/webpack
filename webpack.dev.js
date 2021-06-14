@@ -8,12 +8,6 @@ module.exports = merge(common, {
     output: {
         filename: '[name].bundle.js',
     },
-    resolve:{
-        extensions: ['*', '.js', '.jsx'],
-        alias:{
-            components: path.join(__dirname, 'src/components'),
-        }
-    },
     devServer: {
         open: true,
         contentBase: path.join(__dirname, "dist"),
