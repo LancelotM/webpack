@@ -43,6 +43,15 @@ module.exports = {
                     },
                 }
             },
+            {
+                test: /\.(png|svg|jpg|jpeg|gif)$/i,
+                loader: 'file-loader',
+                options: {
+                    limit: 10000,
+                    name: 'static/media/[name].[hash:8].[ext]',
+                    esModule: false
+                },
+            },
         ]
     },
     plugins: [

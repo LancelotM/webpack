@@ -3,17 +3,10 @@ import React,{useState,useEffect,useContext,useReducer} from 'react';
 import Parent from './parent/index';
 import AppFoot from './foot';
 import {ThemeContext} from './context/theme';
-import reducer from './testUseReducer';
 import {defaultCount} from './config';
 
 export default function HooksApp(props){
     // let [count,setCount] = useState(defaultCount);
-    /**
-     * 测试下来 useReducer 和 state差别不大
-     *  切换后不会保存上次的值
-     */
-    const [state, dispatch] = useReducer(reducer, {count: defaultCount});
-    console.log('useReducer',state);
     const theme = useContext(ThemeContext);
     console.log('HooksApp-theme',theme);
 
