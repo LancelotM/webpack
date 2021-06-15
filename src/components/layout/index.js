@@ -1,5 +1,5 @@
 import React from 'react';
-import {routes} from '../../router';
+import {routes} from 'config/router';
 import { Link } from 'react-router-dom';
 import './index.css';
 

@@ -6,13 +6,8 @@ import {ThemeContext} from './context/theme';
 import {defaultCount} from './config';
 
 export default function HooksApp(props){
-    // let [count,setCount] = useState(defaultCount);
     const theme = useContext(ThemeContext);
     console.log('HooksApp-theme',theme);
-
-    useEffect(() => {
-        console.warn('HooksApp-useEffect-count',state.count);
-    },[state.count]);
 
     useEffect(() => {
         console.warn('HooksApp-useEffect-相当于DidMount');
@@ -25,7 +20,6 @@ export default function HooksApp(props){
     return (
         <ThemeContext.Provider value={theme.dark}>
             <h1>Hello Hooks!</h1>
-            <p>{'HooksApp-useReducer-count:'+state.count}</p>
             <button onClick={()=>dispatch({type:'increment'})}>increment</button>
             <button onClick={()=>dispatch({type:'decrement'})}>decrement</button>
             <Parent/>

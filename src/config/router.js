@@ -1,9 +1,9 @@
 import React from 'react';
 import Layout from 'components/layout';
-import HooksDemo from './pages/hooks';
-import ReactDemo from './pages/react';
-import HomeDemo from './pages/home';
-import TestDemo from './pages/test';
+import HooksDemo from 'pages/hooks';
+import ReactDemo from 'pages/react';
+import HomeDemo from 'pages/home';
+import TestDemo from 'pages/test';
 
 const oldRoutes = {
     path: '/',

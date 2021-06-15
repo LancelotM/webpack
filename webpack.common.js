@@ -19,6 +19,8 @@ module.exports = {
             reactDom: '@hot-loader/react-dom',
             common: path.join(__dirname, 'src/common'),
             images: path.join(__dirname, 'src/images'),
+            config: path.join(__dirname, 'src/config'),
+            pages: path.join(__dirname, 'src/pages'),
 		}
     },
     module: {
@@ -46,7 +48,7 @@ module.exports = {
                 }
             },
             {
-                test: /\.(png|svg|jpg|jpeg|gif)$/i,
+                test: /\.(png|svg|jpg|jpeg|gif)$/,
                 loader: 'file-loader',
                 options: {
                     name:'assets/[name].[ext]',
@@ -54,6 +56,16 @@ module.exports = {
                     // name: 'static/media/[name].[hash:8].[ext]',
                     // esModule: false
                 },
+            },
+            {
+                test: /\.(png|svg|jpg|jpeg|gif)$/,
+                use: {
+                    loader: 'url-loader',
+                    options: {
+                        name:'assets/[name].[ext]',
+                        limit:2048
+                    }
+                }
             },
         ]
     },
