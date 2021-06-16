@@ -3,8 +3,11 @@ import { useHistory } from 'react-router-dom';
 import { virtualApi,testAxiosGet } from 'common/api';
 import Buttons from './buttons';
 import Images from './images';
+import {withLoading} from 'common/hoc';
 // const ButtonsComponent = React.lazy(() => import('./buttons'));
 
+const Loading = () => <div>loading...</div>;
+const withLoadingFunc = withLoading(Loading)(Buttons)
 
 export default function HomeDemo(){
     let history = useHistory();
@@ -21,11 +24,7 @@ export default function HomeDemo(){
             {/* <Suspense fallback={<div>loading...</div>}>
                 <ButtonsComponent/>
             </Suspense> */}
-            {
-                loadData ? <div>loading...</div> : (
-                    <Buttons/>
-                )
-            }
+            {withLoadingFunc({loadData})}
             <Images/>
         </div>
         
