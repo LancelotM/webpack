@@ -34,6 +34,13 @@ module.exports = {
                 ]
             },
             { 
+                test: /\.sass$/, 
+                exclude: /node_modules/, 
+                use: [
+                    'sass-loader',
+                ]
+            },
+            { 
                 test: /\.(js|jsx)$/, 
                 exclude: /node_modules/, 
                 use: {

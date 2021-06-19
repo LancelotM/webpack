@@ -1,4 +1,4 @@
-.css-test h3{
+.cssTest h3,p{
     display: flex;
     justify-content: center;
 }
@@ -16,4 +16,67 @@
     word-wrap: break-word;
     overflow-x: hidden;
     overflow-y: auto; /* 超过最大高度就出现滚动条 */
+}
+
+.flex{
+    display: flex;
+}
+
+.test2Body{
+    width: 100%;
+    min-height:200px;
+    max-height: 400px;
+    border: 1px solid #a0b3d6;
+    flex-direction: column;
+}
+
+.flexBetween{
+    justify-content: space-between;
+}
+
+.test2Item{
+    width:40px;
+    height:40px;
+    background-color: blue;
+    justify-content: center;
+    align-items: center;
+}
+
+.test3ItemAll{
+    width: 0; 
+    height: 0;
+    border-width: 50px;
+    border-style: solid;
+    border-color:#FFCCCC #0099CC #996699 #339933;
+}
+
+.test3Item{
+    width: 0;
+    height: 0;
+    border-width: 50px;
+    border-style: solid;
+}
+
+.triangleUp{
+    border-top-width: 100px;
+    border-bottom-width: 0;
+    border-color:blue transparent transparent transparent
+}
+
+.triangleDown{
+    border-bottom-width: 100px;
+    border-top-width: 0;
+    border-color:transparent transparent blue transparent
+}
+
+.triangleLeft{
+    border-left-width: 100px;
+    border-right-width: 0;
+    border-color:transparent transparent transparent blue
+}
+
+.triangleRight{
+    border-right-width: 100px;
+    border-left-width: 0;
+    border-color:transparent blue transparent transparent
 }
