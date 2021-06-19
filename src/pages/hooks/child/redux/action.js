@@ -15,15 +15,15 @@ export const useClaimAllCount = () => {
     // console.error('shallowEqual',shallowEqual);
     const boundClaimAllCountAction = useCallback(
         data => dispatch(claimAllCount()),
-        [dispatch]
+        []
     );
     const boundIncrementChildCountAction = useCallback(
         data => dispatch(incrementChildCount()),
-        [dispatch]
+        []
     );
     const boundDecrementChildCountAction = useCallback(
         data => dispatch(decrementChildCount()),
-        [dispatch]
+        []
     );
     return {
         parentCount,

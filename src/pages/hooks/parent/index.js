@@ -8,7 +8,7 @@ import * as actions from './redux/action';
 
 const Parent = (props) => {
     console.error('Parent-props',props);
-    let [count,setCount] = useState(defaultCount);
+    const [count,setCount] = useState(defaultCount);
     const {parentCount,actions} = props;
     const theme = useContext(ThemeContext);
     console.log('Parent-theme',theme);

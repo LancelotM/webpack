@@ -16,7 +16,6 @@ module.exports = {
 		extensions: ['*', '.js', '.jsx', '.ts'],
 		alias: {
             components: path.join(__dirname, 'src/components'),
-            reactDom: '@hot-loader/react-dom',
             common: path.join(__dirname, 'src/common'),
             images: path.join(__dirname, 'src/images'),
             config: path.join(__dirname, 'src/config'),
