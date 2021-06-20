@@ -1,7 +1,10 @@
-import React,{useState,useEffect} from 'react';
+import React,{useRef} from 'react';
+import {fullScreen} from 'common/utils'
 import './index.css';
 
+
 export default function Test(props){
+    const fullScreenRef = useRef();
     return <div className='cssTest'>
         <h1>Css样式</h1>
         <div>
@@ -30,6 +33,10 @@ export default function Test(props){
                 <div className='test3Item triangleLeft'></div>
                 <div className='test3Item triangleRight'></div>
             </p>
+        </div>
+        <div>
+            <h3>点击全屏幕</h3>
+            <p ref={fullScreenRef} className='test4Body' onClick={()=>{fullScreen(fullScreenRef)}}>点我</p>
         </div>
     </div>
 }
