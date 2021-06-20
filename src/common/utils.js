@@ -1,4 +1,9 @@
-//防抖debounce代码：
+/**
+ * 防抖debounce
+ * @param {*} fn 
+ * @param {*} timer 
+ * @returns 
+ */
 export function debounce(fn,timer=500) {
     let timeout = null; // 创建一个标记用来存放定时器的返回值
     return function () {
@@ -11,7 +16,12 @@ export function debounce(fn,timer=500) {
     };
 }
 
-//节流throttle代码：
+/**
+ * 节流throttle
+ * @param {*} fn 
+ * @param {*} timer 
+ * @returns 
+ */
 export function throttle(fn,timer=500) {
     let canRun = true; // 通过闭包保存一个标记
     return function () {
@@ -29,7 +39,10 @@ export function throttle(fn,timer=500) {
     };
 }
 
-//全屏
+/**
+ * 全屏
+ * @param {*} targetRef 
+ */
 export function fullScreen(targetRef){
     var el = targetRef.current;
     var rfs = el.requestFullScreen || el.webkitRequestFullScreen || el.mozRequestFullScreen || el.msRequestFullScreen;
@@ -45,7 +58,9 @@ export function fullScreen(targetRef){
     }
 }
 
-//退出全屏
+/**
+ * 退出全屏
+ */
 export function exitScreen(){
     var el = document;
     var cfs = el.cancelFullScreen || el.webkitCancelFullScreen || el.mozCancelFullScreen || el.exitFullScreen;
