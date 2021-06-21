@@ -114,3 +114,25 @@
     height: 0px;
     visibility: hidden;
 }
+
+.test6Body{
+    display: flex;
+}
+
+.left{
+    width: 100px;
+    height: 200px;
+    background-color:red;
+}
+
+.right{
+    width: 100px;
+    height: 200px;
+    background-color:red;
+}
+
+.center{
+    flex: 1;
+    height: 200px;
+    background-color: blue;
+}

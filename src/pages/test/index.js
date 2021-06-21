@@ -49,5 +49,27 @@ export default function Test(props){
                 }
             </p>
         </div>
+        <div>
+            <h3>左侧固定，右侧自适应</h3>
+            <p className='test6Body'>
+                <div className='left'></div>
+                <div className='center'></div>
+            </p>
+        </div>
+        <div>
+            <h3>右侧固定，右侧自适应</h3>
+            <p className='test6Body'>
+                <div className='center'></div>
+                <div className='right'></div>
+            </p>
+        </div>
+        <div>
+            <h3>两侧固定，中间自适应</h3>
+            <p className='test6Body'>
+                <div className='left'></div>
+                <div className='center'></div>
+                <div className='right'></div>
+            </p>
+        </div>
     </div>
 }
