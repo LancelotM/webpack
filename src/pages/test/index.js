@@ -38,5 +38,17 @@ export default function Test(props){
             <h3>点击全屏幕</h3>
             <p ref={fullScreenRef} className='test4Body' onClick={()=>{fullScreen(fullScreenRef)}}>点我</p>
         </div>
+        <div>
+            <h3>一行3个元素，超过换行</h3>
+            <p className='test5Body'>
+                <div>1</div>
+                <div>2</div>
+                <div>3</div>
+                <div>4</div>
+                <div>5</div>
+                {/* <div>6</div> */}
+                {/* <div>7</div> */}
+            </p>
+        </div>
     </div>
 }

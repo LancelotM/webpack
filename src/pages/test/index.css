@@ -90,3 +90,27 @@
     justify-content: center;
     align-items: center;
 }
+
+.test5Body{
+    width: 100%;
+    height: 20rem;
+    background: gray;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.test5Body div{
+    width:30%;
+    height:100px;
+    text-align: center;
+    background-color: blue;
+}
+
+.test5Body::after{
+    content: "";
+    width: 30%;
+    height: 0px;
+    visibility: hidden;
+}
