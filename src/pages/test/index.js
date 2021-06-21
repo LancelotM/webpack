@@ -5,6 +5,7 @@ import './index.css';
 
 export default function Test(props){
     const fullScreenRef = useRef();
+    const test5Arr = [1,2,3,4,5]
     return <div className='cssTest'>
         <h1>Css样式</h1>
         <div>
@@ -41,13 +42,11 @@ export default function Test(props){
         <div>
             <h3>一行3个元素，超过换行</h3>
             <p className='test5Body'>
-                <div>1</div>
-                <div>2</div>
-                <div>3</div>
-                <div>4</div>
-                <div>5</div>
-                {/* <div>6</div> */}
-                {/* <div>7</div> */}
+                {
+                    test5Arr.map((val)=>{
+                        return <div>{val}</div>
+                    })
+                }
             </p>
         </div>
     </div>
