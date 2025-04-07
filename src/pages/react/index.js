@@ -1,7 +1,7 @@
 import React from 'react';
 import Parent from './parent';
 import MyWorldMap from './MyWorldMap';
-import './index.css';
+import './index.scss';
 
 export default function ReactDemo(){
     const myWordMapRef = React.useRef();

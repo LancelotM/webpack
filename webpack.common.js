@@ -6,38 +6,47 @@ const path = require("path");
 module.exports = {
     entry: {
         polyfills: './src/polyfills.js',
-        index: './src/index.js',
+        index: './src/index.tsx',
     },
     output: {
         path: path.resolve(__dirname, "./dist"),
-        publicPath: '/',
+        filename:'builde.[hash:6].js',
     },
     resolve: {
-		extensions: ['*', '.js', '.jsx', '.ts'],
+		extensions: ['.ts', '.tsx', '.js', '.jsx', '.json'],
 		alias: {
-            components: path.join(__dirname, 'src/components'),
-            common: path.join(__dirname, 'src/common'),
-            images: path.join(__dirname, 'src/images'),
-            config: path.join(__dirname, 'src/config'),
-            pages: path.join(__dirname, 'src/pages'),
+            '@': path.join(__dirname, 'src'),
+            'components': path.join(__dirname, 'src/components'),
+            'common': path.join(__dirname, 'src/common'),
+            'images': path.join(__dirname, 'src/images'),
+            'config': path.join(__dirname, 'src/config'),
+            'pages': path.join(__dirname, 'src/pages'),
 		}
     },
     module: {
         rules:[
-            { test: /\.ts$/, exclude: /node_modules/, use: 'ts-loader' },
+            { 
+                test: /\.(ts|tsx)$/, 
+                exclude: /node_modules/, 
+                use: ["ts-loader"],
+            },
+            {
+                test: /\.s[ac]ss$/i,
+                use: [
+                  // 将 JS 字符串生成为 style 节点
+                  'style-loader',
+                  // 将 CSS 转化成 CommonJS 模块
+                  'css-loader',
+                  // 将 Sass 编译成 CSS
+                  'sass-loader',
+                ],
+              },
             { 
                 test: /\.css$/, 
                 exclude: /node_modules/, 
                 use: [
                     'style-loader',
                     'css-loader',
-                ]
-            },
-            { 
-                test: /\.sass$/, 
-                exclude: /node_modules/, 
-                use: [
-                    'sass-loader',
                 ]
             },
             { 
@@ -57,22 +66,11 @@ module.exports = {
                 test: /\.(png|svg|jpg|jpeg|gif)$/,
                 loader: 'file-loader',
                 options: {
-                    name:'assets/[name].[ext]',
+                    name:'assets/[name].[hash:8].[ext]',
                     // limit: 10000,
-                    // name: 'static/media/[name].[hash:8].[ext]',
                     // esModule: false
                 },
-            },
-            {
-                test: /\.(png|svg|jpg|jpeg|gif)$/,
-                use: {
-                    loader: 'url-loader',
-                    options: {
-                        name:'assets/[name].[ext]',
-                        limit:2048
-                    }
-                }
-            },
+            }
         ]
     },
     plugins: [

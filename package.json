@@ -1,5 +1,5 @@
 {
-  "name": "webpack-template",
+  "name": "webpack",
   "sideEffects": [
     "*.css"
   ],
@@ -16,12 +16,15 @@
   "license": "ISC",
   "devDependencies": {
     "@types/lodash": "^4.14.160",
+    "@types/react-dom": "^18.0.6",
+    "@types/react-router-dom": "^5.3.3",
     "babel": "^6.23.0",
     "babel-core": "^6.26.3",
     "babel-loader": "^7.1.5",
     "babel-preset-env": "^1.7.0",
     "babel-preset-es2015": "^6.24.1",
     "babel-preset-react": "^6.24.1",
+    "babel-preset-typescript": "^7.0.0-alpha.19",
     "clean-webpack-plugin": "^3.0.0",
     "css-loader": "^4.2.2",
     "eslint": "^7.7.0",
@@ -31,6 +34,7 @@
     "html-webpack-plugin": "^4.3.0",
     "react-hot-loader": "^4.12.21",
     "redux-logger": "^3.0.6",
+    "sass": "^1.54.5",
     "style-loader": "^1.2.1",
     "ts-loader": "^8.0.3",
     "typescript": "^4.0.2",

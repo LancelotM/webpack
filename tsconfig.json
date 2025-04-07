@@ -8,8 +8,11 @@
         "allowJs": true,
         "removeComments": true,
         "preserveConstEnums": true,
+        "esModuleInterop":true,
+        "moduleResolution":"Node",
         "sourceMap": true
     },
-    "include": ["src/**/*"],
-    "exclude": ["node_modules", "**/*.spec.ts"]
+    "include": ["./src/**/*"],
+    "exclude": ["node_modules","./dist"],
+    "extends": "./paths.json"
   }

@@ -1,11 +1,10 @@
 import React from 'react';
+import pic1 from 'images/home/pic1.jpeg'
 
 export default function Images(){
     return (
-        
         <div>
-            {/* <img src={require('images/home/pic1.jpeg')}/> */}
-            <img src={'images/home/pic1.jpeg'}/>
+            <img src={pic1}/>
         </div>
     )
 }

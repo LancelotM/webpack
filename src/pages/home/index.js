@@ -4,6 +4,7 @@ import { virtualApi,testAxiosGet } from 'common/api';
 import Buttons from './buttons';
 import Images from './images';
 import {withLoading} from 'common/hoc';
+import './index.scss';
 // const ButtonsComponent = React.lazy(() => import('./buttons'));
 
 const Loading = () => <div>loading...</div>;
@@ -20,7 +21,7 @@ export default function HomeDemo(){
     },[])
     return (
         <div>
-            <h1>Home</h1>
+            <h1 className='h1FontColor'>Home</h1>
             {/* <Suspense fallback={<div>loading...</div>}>
                 <ButtonsComponent/>
             </Suspense> */}

@@ -1,7 +1,7 @@
 import React from 'react';
 import {routes} from 'config/router';
 import { Link } from 'react-router-dom';
-import './index.css';
+import './index.scss';
 
 export default function Layout(){
     return (

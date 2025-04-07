@@ -1,14 +1,14 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import ReactDOMServer from 'react-dom/server';
 import { Provider } from 'react-redux'
 import { HashRouter as Router, Route, Switch } from 'react-router-dom';
-// import './index.ts';
-import './index.css';
+import './index.scss';
 import Layout from 'components/layout';
 import {routes} from 'config/router';
 import {store} from 'config/store'
 
-function App(props){
+function App(){
     return (
         <Provider store={store}>
             <Router>
@@ -29,7 +29,9 @@ function App(props){
 
 const rootNode = document.getElementById('root');
 
-ReactDOM.render(<App/>, rootNode)
+ReactDOM.hydrate(<App/>, rootNode)
+// ReactDOM.renderToString()
+ReactDOMServer.renderToString(<App/>)
 
 // ReactDOM.createBlockingRoot(rootNode).render(<App />)
 

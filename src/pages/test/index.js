@@ -1,6 +1,6 @@
 import React,{useRef} from 'react';
 import {fullScreen} from 'common/utils'
-import './index.css';
+import './index.scss';
 
 
 export default function Test(props){
